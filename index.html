@@ -2,10 +2,163 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>vue-play</title>
+    <title>vue_play</title>
   </head>
   <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+      <div id="app1">{{message}}</div>
+
+      <div id="app2">
+          <component1></component1>
+      </div>
+
+      <div id="app3">
+          <table>
+              <my-row></my-row>
+          </table>
+      </div>
+
+      <div id="app4">
+          <component2 @click="_changeValue" :my-message="message"></component2>
+      </div>
+
+      <div id="app5">
+          {{total}}
+          <simple-counter @click="increseTotal"></simple-counter>
+          <simple-counter @click="increseTotal"></simple-counter>
+      </div>
+
+      <div id="app6">
+          <component3 :foo.sync="bar"></component3>
+      </div>
+
+      <div id="app7">
+          <span>{{price?price:0}}</span>
+          <currency-input v-model="price"></currency-input>
+      </div>
+
+      <div id="app8">
+          <my-checkbox 
+              :checked="foo"
+              @change="changeChecked"
+              :value="some_value"
+          >
+          </my-checkbox>
+      </div>
+
+      <div id="app9">
+          <my-checkbox-1
+              v-model="foo"
+              value="some_value"
+          >
+          </my-checkbox-1>
+      </div>
+
+      <div id="app10">
+          <component3 :id="id"></component3>
+          <component4 :id="id"></component4>
+      </div>
+
+      <div id="app11">
+          <app-layout>
+              <h1 slot="header">
+                  Here's the header.
+              </h1>
+              <p>
+                  Here's the main content.
+              </p>
+              <p slot="footer">
+                  Here's the footer.
+              </p>
+          </app-layout>
+      </div>
+
+      <div id="app12">
+          <div class="parent">
+              <child>
+                <template scope="props">
+                    <span>Hello from parent</span>
+                    <span>{{props.text}}</span>
+
+                </template>
+              </child>
+          </div>
+      </div>
+
+      <div id="app13">
+          <my-awesome-list :items="items">
+              <template slot="item" scope="props">
+                  <li class="my-fancy-item">{{props.text}}</li>
+              </template>
+          </my-awesome-list>
+      </div>
+
+      <div id="app14">
+          <component :is="currentView">
+          </component>
+      </div>
+
+      <div id="app15">
+          <component-15
+              :foo="baz"
+              :bar="qux"
+              @event-a="doThis"
+              @event-b="doThat"
+              >
+              <img slot="icon" :src="logo">
+              <p slot="main-text">Hello!</p>
+          </component-15>
+      </div>
+
+      <div id="app16">
+          <p>
+            <span>{{folder.name}}</span>
+            <tree-folder-contents :children="folder.children" />
+          </p>
+      </div>
+
+      <div id="app17">
+          <tree-folder :folder="folder">
+          </tree-folder>
+      </div>
+
+      <div id="app18">
+          {{period}}
+      </div>
+      
+      <style>
+          #SomeElementYouWantToAnimate {
+              width: 10px;
+              height: 10px;
+              background-color: blue;
+          }
+      </style>
+
+      <div id="app19">
+          <span id="SomeElementYouWantToAnimate"></span>
+      </div>
+
+      <div id="app20">
+          <span class="displayTime"></span>
+      </div>
+      
+      <div id="app21">
+          <span class="displayTime1"></span>
+      </div>
+
+      <div id="app22">
+          <div>Registration closes in <span id="time"></span> minutes!</div>
+      </div>
+
+      <div id="app23">
+          <span id="timeSpan"></span>
+      </div>
+
+      <div id="app24">
+          <hello></hello>
+      </div>
+
+      <div id="app25">
+          <price-card></price-card>
+      </div>
   </body>
 </html>
