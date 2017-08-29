@@ -12,6 +12,140 @@ Vue.config.productionTip = true
 
 let debug = true;
 
+(function(){
+
+function main() {
+  let canvas = document.querySelector("#movingObjectCanvas");
+  let context = canvas.getContext("2d");
+
+  // set starting values
+  let fps = 60;
+  let percent = 0;
+  let direction = 1;
+
+  // start the animation
+  animate();
+
+  function animate() {
+    
+    // set the animation position (0-100)
+    percent += direction;
+    if(percent < 0){
+      percent = 0;
+      direction = 1;
+    }
+    if(percent > 100){
+      percent = 100;
+      direction = -1;
+    }
+
+    draw(percent);
+
+    // request another frame
+    setTimeout(function(){
+      requestAnimationFrame(animate);
+    }, 1000/fps);
+  }
+
+  function draw(sliderValue) {
+    // redraw path
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.lineWidth = 5;
+
+    context.beginPath();
+    context.moveTo(100, 20);
+    context.lineTo(200, 160);
+    context.strokeStyle = 'red';
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(200, 160);
+    context.quadraticCurveTo(230, 200, 250, 120);
+    context.strokeStyle = 'green';
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(250, 120);
+    context.bezierCurveTo(290, -40, 300, 200, 400, 150);
+    context.strokeStyle = 'blue';
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(400, 150);
+    context.lineTo(500, 90);
+    context.strokeStyle = 'gold';
+    context.stroke();
+
+    // draw the tracking rectangle
+    let xy;
+    let percent;
+    if(sliderValue < 25){
+      percent = sliderValue / 24;
+      xy = getLineXYatPercent({
+        x: 100,
+        y: 20
+      }, {
+        x: 200,
+        y: 160
+      }, percent);
+    }else if(sliderValue < 50){
+      percent = (sliderValue - 25) / 24;
+      xy = getLineXYatPercent({
+        x: 200,
+        y: 160
+      }, {
+        x: 250,
+        y: 120
+      }, percent);
+    }else if(sliderValue < 75){
+      percent = (sliderValue - 50) / 24;
+      xy = getLineXYatPercent({
+        x: 250,
+        y: 120
+      }, {
+        x: 400,
+        y: 150
+      }, percent);
+    }else{
+      percent = (sliderValue - 75) /25;
+      xy = getLineXYatPercent({
+        x: 400,
+        y: 150
+      }, {
+        x: 500,
+        y: 90
+      }, percent);
+    }
+
+    drawRectangle(xy);
+
+  }
+
+  function getLineXYatPercent(startPoint, endPoint, percent) {
+    let dx = endPoint.x - startPoint.x;
+    let dy = endPoint.y - startPoint.y;
+    let x = startPoint.x + dx * percent;
+    let y = startPoint.y + dy * percent;
+    return ({
+      x: x,
+      y: y
+    });
+  }
+
+  function drawRectangle(point, color) {
+    context.fillStyle = 'cyan';
+    context.strokeStyle = 'gray';
+    context.lineWidth = 3;
+    context.beginPath();
+    context.rect(point.x-13, point.y-8, 25, 15);
+    context.fill();
+    context.stroke();
+  }
+}
+
+main();
+
+})();
 /* eslint-disable no-new */
 
 function LineChart_1(options){
