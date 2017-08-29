@@ -5,6 +5,24 @@
     <title>vue_play</title>
   </head>
   <body>
+
+      <div id="app31">
+          <canvas id="myCanvas" width="600" height="300" style="border: 1px solid black;">
+          </canvas>
+      </div>
+
+<style>
+    #depthChart {
+        border: 1px solid rgba(30, 39, 49, 0.25);
+    }
+</style>
+
+      <div id="app30">
+          <canvas id="depthChart" width="1200" height="480">
+          </canvas>
+        
+      </div>
+
       <div id="app1">{{message}}</div>
 
       <div id="app2">
@@ -160,5 +178,46 @@
       <div id="app25">
           <price-card></price-card>
       </div>
+
+      <div id="app26">
+      </div>
+
+      <div id="app27">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Age</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr v-for="(item, index) in items">
+                      <td>{{item.name}}</td>
+                      <td>
+                          <input v-model="item.age"
+                                 @change="changeAge(item, $event)"
+                                 />
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div id="app28">
+          Time Count Down: {{difference}}
+      </div>
+
+<style>
+    canvas {
+        border: 1px solid black;
+    }
+</style>
+
+      <div id="app29">
+          <canvas id="canvas" width="300" height="300">
+              Current stock price: $3.15 + 0.15
+          </canvas>
+      </div>
+
   </body>
 </html>
