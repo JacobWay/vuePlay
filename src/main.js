@@ -7,16 +7,27 @@ import logo from '@/assets/logo.png';
 
 import hello from '../src/components/Hello.vue';
 import priceCard from '../src/components/priceCard.vue';
+import radio from '../src/components/Raido.vue';
 
 Vue.config.productionTip = true
 
 let debug = true;
 
 var app33 = new Vue({
+  el: '#app34',
+  data: {
+    radios: [3, 4],
+  },
+  components: {
+    radio
+  }
+});
+
+var app33 = new Vue({
   el: '#app33',
   data: {
     radios: [1, 2],
-    picked: ''
+    radioValue: ''
   }
 });
 

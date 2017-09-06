@@ -6,12 +6,16 @@
   </head>
   <body>
 
+      <div id="app34">
+          <radio :radios="radios" />
+      </div>
+
       <div id="app33">
-          <!--<li v-for="radio in radios">-->
-              <!--<input type="radio" v-for="radio in radios" :value="radio" v-model="picked">-->
-          <!--</li>-->
-          <input type="radio" v-for="radio in radios" :value="radio" v-model="picked">
-          <span>Picked: {{picked}}</span>
+          <div v-for="(radio, index) in radios">
+              <input :id="'radio' + index" type="radio" :value="radio" v-model="radioValue">
+              <label :for="'radio' + index">{{'radio '+ index}}</label>
+          </div>
+          <span>Picked: {{radioValue}}</span>
       </div>
 
       <div id="app32">
