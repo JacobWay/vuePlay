@@ -6,6 +6,14 @@
   </head>
   <body>
 
+      <div id="app33">
+          <!--<li v-for="radio in radios">-->
+              <!--<input type="radio" v-for="radio in radios" :value="radio" v-model="picked">-->
+          <!--</li>-->
+          <input type="radio" v-for="radio in radios" :value="radio" v-model="picked">
+          <span>Picked: {{picked}}</span>
+      </div>
+
       <div id="app32">
           <canvas id="movingObjectCanvas" width="600" height="400">
           </canvas>

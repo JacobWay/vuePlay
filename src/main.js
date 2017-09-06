@@ -12,6 +12,14 @@ Vue.config.productionTip = true
 
 let debug = true;
 
+var app33 = new Vue({
+  el: '#app33',
+  data: {
+    radios: [1, 2],
+    picked: ''
+  }
+});
+
 (function(){
 
 function main() {
