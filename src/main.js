@@ -13,14 +13,33 @@ Vue.config.productionTip = true
 
 let debug = true;
 
-var app33 = new Vue({
+var app34 = new Vue({
   el: '#app34',
   data: {
     radios: [3, 4],
+    message_: '1',
   },
   components: {
     radio
-  }
+  },
+  computed: {
+    message: {
+      get: function() {
+        return this.message_;
+      },
+      set: function(newValue) {
+        this.message_ = newValue;
+      }
+    }
+  },
+  mounted() {
+    this.message = '??'
+    console.log('??? message: ', this.message);
+  },
+  methods: {
+    changeMessage: function(newValue) {
+    }
+  },
 });
 
 var app33 = new Vue({
